@@ -4,6 +4,7 @@ import sys
 
 import click
 from terraplanfeed import __version__
+from terraplanfeed.terraform import parse_json
 
 
 def version_msg():
@@ -16,8 +17,17 @@ def version_msg():
 
 @click.command(context_settings=dict(help_option_names=["-h", "--help"]))
 @click.version_option(__version__, "-v", "--version", message=version_msg())
-def main():
+@click.option(
+    "--file",
+    "-f",
+    type=click.Path(),
+    default=None,
+    required=True,
+    help="Terraform plan in json format.",
+)
+def main(json_file):
     """Handle arguments."""
+    parse_json(filename=json_file)
     pass
 
 
