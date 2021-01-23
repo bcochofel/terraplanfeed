@@ -9,6 +9,9 @@
 - version argument
 - package skeleton
 
+### Fix
+- program name
+
 
 <a name="0.1.0"></a>
 ## 0.1.0 - 2021-01-23
