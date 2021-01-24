@@ -4,13 +4,14 @@
 
 
 <a name="0.1.1"></a>
-## [0.1.1] - 2021-01-23
+## [0.1.1] - 2021-01-24
 ### Feat
 - filename argument
 - version argument
 - package skeleton
 
 ### Fix
+- venv and gitignore
 - program name
 
 
