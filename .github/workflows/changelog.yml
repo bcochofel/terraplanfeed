@@ -1,4 +1,4 @@
-name: Release
+name: Changelog
 on:
   push:
     branches:
@@ -26,5 +26,10 @@ jobs:
         uses: nuuday/github-changelog-action@v1.0.0
         with:
           next_version: "${{ steps.gitversion.outputs.majorMinorPatch }}"
+      - name: Bump version
+        run: |
+          sed -i "s/\(version=\"\).*\(\"\)/\1$VER\2/g" setup.py
+        env:
+          VER: ${{ steps.gitversion.outputs.majorMinorPatch }}
       - name: Commit Changelog
         uses: stefanzweifel/git-auto-commit-action@v4
