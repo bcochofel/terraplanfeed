@@ -6,6 +6,7 @@
 <a name="0.1.1"></a>
 ## [0.1.1] - 2021-01-24
 ### Feat
+- package skeleton
 - filename argument
 - version argument
 - package skeleton
