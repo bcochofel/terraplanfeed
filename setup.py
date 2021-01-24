@@ -2,6 +2,7 @@
 
 from setuptools import setup, find_packages
 import pathlib
+import terraplanfeed
 
 here = pathlib.Path(__file__).parent.resolve()
 
@@ -10,7 +11,7 @@ long_description = (here / "README.md").read_text(encoding="utf-8")
 
 setup(
     name="terraplanfeed",
-    version="0.1.0",
+    version=terraplanfeed.__version__,
     description="Parse Terraform plan in json format and give feedback.",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -34,5 +35,5 @@ setup(
     packages=find_packages(where="terraplanfeed"),
     python_requires=">=3.6, <4",
     install_requires=["Click", "Black"],
-    entry_points={"console_scripts": ["terraplanfeed=terraplanfeed.main:main"]},
+    entry_points={"console_scripts": ["terraplanfeed=terraplanfeed.__main__:main"]},
 )
