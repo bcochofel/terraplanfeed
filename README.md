@@ -2,7 +2,31 @@
 
 [![pre-commit badge][pre-commit-badge]][pre-commit] [![Conventional commits badge][conventional-commits-badge]][conventional-commits] [![Keep a Changelog v1.1.0 badge][keep-a-changelog-badge]][keep-a-changelog] [![MIT License Badge][license-badge]][license]
 
-Terraform Plan Parser
+This tool parses Terraform plan files in JSON format and gives feedback about the changes.
+
+# Description
+
+This tool aims to parse Terraform plan files (in JSON format) and gives feedback to several types of outputs.
+
+Outputs can be:
+* stdout
+* stdout in JSON
+* Github pull request comment
+* Azure DevOps pull request comment
+
+To create the Terraform plan file:
+
+```bash
+terraform init
+terraform plan -out=plan.out
+terraform show -no-color plan.out > plan.json
+```
+
+# Run and test locally
+
+```bash
+python3 -m pip install --editable .
+```
 
 # pre-commit hooks
 

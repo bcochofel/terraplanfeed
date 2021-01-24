@@ -28,7 +28,7 @@ jobs:
           next_version: "${{ steps.gitversion.outputs.majorMinorPatch }}"
       - name: Bump version
         run: |
-          sed -i "s/\(version=\"\).*\(\"\)/\1$VER\2/g" setup.py
+          sed -i "s/\(__version__ = \"\).*\(\"\)/\1$VER\2/g" terraplanfeed/__init__.py
         env:
           VER: ${{ steps.gitversion.outputs.majorMinorPatch }}
       - name: Commit Changelog
