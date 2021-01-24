@@ -12,6 +12,7 @@
 - package skeleton
 
 ### Fix
+- github actions name
 - github workflows
 - venv and gitignore
 - program name
