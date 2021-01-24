@@ -10,27 +10,6 @@ jobs:
         python-version: [3.6, 3.7, 3.8, 3.9]
     steps:
     - uses: actions/checkout@v2
-      with:
-        fetch-depth: '0'
-    - name: Install GitVersion
-      uses: gittools/actions/gitversion/setup@v0.9.8
-      with:
-        versionSpec: '5.x'
-    - name: Use GitVersion
-      uses: gittools/actions/gitversion/execute@v0.9.8
-      id: gitversion
-    - name: Changelog
-      id: changelog
-      uses: nuuday/github-changelog-action@v1.0.0
-      with:
-        next_version: "${{ steps.gitversion.outputs.majorMinorPatch }}"
-    - name: Bump version
-      run: |
-        sed -i "s/\(version=\"\).*\(\"\)/\1$VER\2/g" setup.py
-      env:
-        VER: ${{ steps.gitversion.outputs.majorMinorPatch }}
-    - name: Commit Changelog and Version
-      uses: stefanzweifel/git-auto-commit-action@v4
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
       with:
