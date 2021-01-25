@@ -9,6 +9,7 @@
 - configure environment
 
 ### Fix
+- requirements.txt
 - setup.py classifiers
 
 
