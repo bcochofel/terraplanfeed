@@ -8,6 +8,9 @@
 ### Chore
 - configure environment
 
+### Fix
+- setup.py classifiers
+
 
 <a name="0.1.1"></a>
 ## [0.1.1] - 2021-01-24
