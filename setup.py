@@ -20,20 +20,22 @@ setup(
     author_email="bruno.cochofel@gmail.com",
     classifiers=[
         "Development Status :: 3 - Alpha",
+        "Environment :: Console",
         "Intended Audience :: Developers",
-        "Topic :: Software Development :: Build Tools",
+        "Intended Audience :: System Administrators",
         "License :: OSI Approved :: MIT License",
-        "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3 :: Only",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
-        "Programming Language :: Python :: 3 :: Only",
+        "Topic :: Software Development :: Build Tools",
     ],
     keywords=["terraplanfeed", "Python", "terraform", "terraform plan"],
     package_dir={"terraplanfeed": "terraplanfeed"},
     packages=find_packages(where="terraplanfeed"),
-    python_requires=">=3.6, <4",
+    python_requires=">=3.7, <4",
     install_requires=["Click", "Black"],
-    entry_points={"console_scripts": ["terraplanfeed=terraplanfeed.__main__:main"]},
+    entry_points={
+        "console_scripts": ["terraplanfeed=terraplanfeed.__main__:main"]
+    },
 )
