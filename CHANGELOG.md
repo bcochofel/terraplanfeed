@@ -9,6 +9,9 @@
 - module structure
 - parse terraform plan
 
+### Fix
+- validate json file
+
 
 <a name="0.1.3"></a>
 ## [0.1.3] - 2021-01-25
