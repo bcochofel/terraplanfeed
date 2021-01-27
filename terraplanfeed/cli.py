@@ -2,6 +2,7 @@
 
 import os
 import sys
+import json
 import click
 
 from terraplanfeed import __version__
@@ -17,6 +18,14 @@ def version_msg():
 
 @click.command(context_settings=dict(help_option_names=["-h", "--help"]))
 @click.version_option(__version__, "-V", "--version", message=version_msg())
-def main():
+@click.argument("filename", type=click.Path(exists=True))
+def main(filename):
     """Parse Terraform plan in JSON format."""
-    click.echo("Hello World")
+    #    click.echo("Terraform JSON file: %s" % filename)
+
+    """Open JSON file"""
+    with open(filename) as f:
+        data = json.load(f)
+    # print(data["resource_changes"])
+    for r in data["resource_changes"]:
+        print(r["address"])
