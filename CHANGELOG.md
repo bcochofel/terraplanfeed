@@ -5,6 +5,9 @@
 
 <a name="0.1.4"></a>
 ## [0.1.4] - 2021-01-27
+### Chore
+- vscode settings for project
+
 ### Feat
 - module structure
 - parse terraform plan
