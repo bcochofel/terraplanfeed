@@ -8,6 +8,9 @@
 ### Chore
 - vscode settings for project
 
+### Docs
+- terraform link for json docs
+
 ### Feat
 - module structure
 - parse terraform plan
