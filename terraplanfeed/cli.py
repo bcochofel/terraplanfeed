@@ -2,10 +2,11 @@
 
 import os
 import sys
-import json
 import click
 
 from terraplanfeed import __version__
+from terraplanfeed.log import configure_logger
+from terraplanfeed.main import terraplanfeed
 
 
 def version_msg():
@@ -19,13 +20,29 @@ def version_msg():
 @click.command(context_settings=dict(help_option_names=["-h", "--help"]))
 @click.version_option(__version__, "-V", "--version", message=version_msg())
 @click.argument("filename", type=click.Path(exists=True))
-def main(filename):
+@click.option(
+    "-v",
+    "--verbose",
+    is_flag=True,
+    help="Print debug information",
+    default=False,
+)
+@click.option(
+    "-d",
+    "--debug-file",
+    type=click.Path(),
+    default=None,
+    help="Print debug information to this file",
+)
+def main(filename, verbose, debug_file):
     """Parse Terraform plan in JSON format."""
-    #    click.echo("Terraform JSON file: %s" % filename)
 
-    """Open JSON file"""
-    with open(filename) as f:
-        data = json.load(f)
-    # print(data["resource_changes"])
-    for r in data["resource_changes"]:
-        print(r["address"])
+    configure_logger(
+        stream_level="DEBUG" if verbose else "INFO", debug_file=debug_file
+    )
+
+    terraplanfeed(filename)
+
+
+if __name__ == "__main__":
+    main()
