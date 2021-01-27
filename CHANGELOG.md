@@ -3,6 +3,18 @@
 ## [Unreleased]
 
 
+<a name="0.1.4"></a>
+## [0.1.4] - 2021-01-27
+### Feat
+- parse terraform plan
+
+
+<a name="0.1.3"></a>
+## [0.1.3] - 2021-01-25
+### Fix
+- gitignore
+
+
 <a name="0.1.2"></a>
 ## [0.1.2] - 2021-01-25
 ### Chore
@@ -11,6 +23,9 @@
 ### Fix
 - requirements.txt
 - setup.py classifiers
+
+### Pull Requests
+- Merge pull request [#3](https://github.com/bcochofel/terraplanfeed/issues/3) from bcochofel/env_configuration
 
 
 <a name="0.1.1"></a>
@@ -43,6 +58,8 @@
 - Merge pull request [#1](https://github.com/bcochofel/terraplanfeed/issues/1) from bcochofel/package_skel
 
 
-[Unreleased]: https://github.com/bcochofel/terraplanfeed/compare/0.1.2...HEAD
+[Unreleased]: https://github.com/bcochofel/terraplanfeed/compare/0.1.4...HEAD
+[0.1.4]: https://github.com/bcochofel/terraplanfeed/compare/0.1.3...0.1.4
+[0.1.3]: https://github.com/bcochofel/terraplanfeed/compare/0.1.2...0.1.3
 [0.1.2]: https://github.com/bcochofel/terraplanfeed/compare/0.1.1...0.1.2
 [0.1.1]: https://github.com/bcochofel/terraplanfeed/compare/0.1.0...0.1.1
