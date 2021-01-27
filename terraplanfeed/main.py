@@ -4,7 +4,7 @@ import sys
 import os
 import json
 
-from terraplanfeed.terraform import parseJson
+from terraplanfeed.terraform import resourceChanges
 
 logger = logging.getLogger(__name__)
 
@@ -16,9 +16,9 @@ def terraplanfeed(filename):
     logger.debug("parsing file %s", filename)
     with open(filename) as f:
         try:
-            data = json.load(f)
-        except json.decoder.JSONDecodeError:
-            logger.debug("%s", sys.exc_info())
+            tf = json.load(f)
+        except ValueError as e:
+            logger.error("%s", e)
             sys.exit(1)
 
-    parseJson(data)
+    resourceChanges(tf)
