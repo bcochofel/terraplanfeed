@@ -1,4 +1,8 @@
-"""Terraform handler."""
+"""Terraform handler.
+
+Check https://www.terraform.io/docs/internals/json-format.html
+for more info
+"""
 import logging
 
 logger = logging.getLogger(__name__)
