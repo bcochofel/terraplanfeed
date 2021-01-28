@@ -12,6 +12,7 @@
 - terraform link for json docs
 
 ### Feat
+- create resource attributes
 - terraform functions for filtering data
 - module structure
 - parse terraform plan
