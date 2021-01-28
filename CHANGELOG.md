@@ -4,7 +4,7 @@
 
 
 <a name="0.1.4"></a>
-## [0.1.4] - 2021-01-27
+## [0.1.4] - 2021-01-28
 ### Chore
 - vscode settings for project
 
@@ -12,6 +12,7 @@
 - terraform link for json docs
 
 ### Feat
+- terraform functions for filtering data
 - module structure
 - parse terraform plan
 
