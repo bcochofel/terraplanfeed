@@ -4,11 +4,12 @@
 
 
 <a name="0.1.4"></a>
-## [0.1.4] - 2021-01-28
+## [0.1.4] - 2021-01-29
 ### Chore
 - vscode settings for project
 
 ### Docs
+- docstrings update
 - terraform link for json docs
 
 ### Feat
