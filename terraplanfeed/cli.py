@@ -1,4 +1,13 @@
-"""Entry point for package."""
+"""
+Entry point for package.
+
+Arguments:
+    -h, --help: prints help
+    -V, --version: prints version, location and python powering it
+    <filename> (required): terraform plan in json format
+    -v, --verbose: prints debug information
+    -d, --debug-file: filename to print debug information
+"""
 
 import os
 import sys

@@ -1,4 +1,9 @@
-"""Module for setting up logging."""
+"""
+Module for setting up logging.
+
+Functions:
+    configure_logger: configures logger
+"""
 import logging
 import sys
 

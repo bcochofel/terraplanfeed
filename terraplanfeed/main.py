@@ -1,4 +1,11 @@
-"""Main entrypoint for terraplanfeed command."""
+"""
+Main entrypoint for terraplanfeed command.
+
+Main code execution for terraplanfeed command.
+
+Functions:
+    terraplanfeed: main code execution
+"""
 import logging
 import sys
 import os
@@ -21,4 +28,5 @@ def terraplanfeed(filename):
             logger.error("%s", e)
             sys.exit(1)
 
-    parsePlan(tf)
+    resources = parsePlan(tf)
+    print(resources)
