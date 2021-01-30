@@ -6,6 +6,7 @@
 <a name="0.3.1"></a>
 ## [0.3.1] - 2021-01-30
 ### Docs
+- update setup classifier
 - update module documentation
 
 
