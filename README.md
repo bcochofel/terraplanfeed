@@ -56,6 +56,23 @@ Summary of changes:
 python3 -m pip install --editable .
 ```
 
+# Build and upload to PyPI
+
+To build and upload to Test PyPI repository:
+
+```bash
+python3 -m pip install --user --upgrade setuptools wheel
+python3 setup.py sdist bdist_wheel
+python3 -m pip install --user --upgrade twine
+python3 -m twine upload --repository testpypi dist/*
+```
+
+To upload to PyPI repository:
+
+```bash
+python3 -m twine upload dist/*
+```
+
 # pre-commit hooks
 
 Read the [pre-commit hooks](docs/pre-commit-hooks.md) document for more info.
