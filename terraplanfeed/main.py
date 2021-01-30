@@ -12,7 +12,8 @@ import os
 import json
 
 from terraplanfeed.terraform import parsePlan
-from terraplanfeed.stdout import writeToStdout
+import terraplanfeed.stdout as stdout
+import terraplanfeed.azuredevops as azuredevops
 
 logger = logging.getLogger(__name__)
 
@@ -37,5 +38,7 @@ def terraplanfeed(filename, output):
 
     resources = parsePlan(tf)
 
-    if output.lower() == "stdout":
-        writeToStdout(resources)
+    if output.lower() == "azuredevops":
+        azuredevops.main(resources)
+    else:
+        stdout.main(resources)
