@@ -2,6 +2,11 @@
 STDOUT output driver module.
 
 https://www.terraform.io/docs/internals/json-format.html#change-representation
+
+Functions:
+    getAction: gets the action from actions list
+    parseChanges: gets list of changes and creates multiline summary
+    writeToStdout: writes the summary content to stdout
 """
 import logging
 
