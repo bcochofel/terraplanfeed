@@ -3,6 +3,12 @@
 ## [Unreleased]
 
 
+<a name="0.3.0"></a>
+## [0.3.0] - 2021-01-30
+### Feat
+- **output:** stdout output driver
+
+
 <a name="0.2.0"></a>
 ## [0.2.0] - 2021-01-30
 ### Chore
@@ -21,6 +27,9 @@
 
 ### Fix
 - validate json file
+
+### Pull Requests
+- Merge pull request [#4](https://github.com/bcochofel/terraplanfeed/issues/4) from bcochofel/parse_tf_plan
 
 
 <a name="0.1.3"></a>
@@ -72,7 +81,8 @@
 - Merge pull request [#1](https://github.com/bcochofel/terraplanfeed/issues/1) from bcochofel/package_skel
 
 
-[Unreleased]: https://github.com/bcochofel/terraplanfeed/compare/0.2.0...HEAD
+[Unreleased]: https://github.com/bcochofel/terraplanfeed/compare/0.3.0...HEAD
+[0.3.0]: https://github.com/bcochofel/terraplanfeed/compare/0.2.0...0.3.0
 [0.2.0]: https://github.com/bcochofel/terraplanfeed/compare/0.1.3...0.2.0
 [0.1.3]: https://github.com/bcochofel/terraplanfeed/compare/0.1.2...0.1.3
 [0.1.2]: https://github.com/bcochofel/terraplanfeed/compare/0.1.1...0.1.2
