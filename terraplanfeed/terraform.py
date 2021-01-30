@@ -10,6 +10,7 @@ Functions:
     filterNoOp: filters out no-op actions from resource_changes
     parseResource: parses resource to get some metadata like,
         name, address
+    calculateName: tries to calculate resource name
     getAttributes: creates a list of resources with some attributes
     parsePlan: main function
 """
@@ -61,12 +62,50 @@ def filterNoOp(resources):
     return changes
 
 
+def calculateName(resource):
+    """
+    Tries to calculate the name of the resource.
+
+    Args:
+        resource(dict): Resource object
+
+    Returns:
+        String name
+    """
+
+    name = ""
+    beforeName = ""
+    afterName = ""
+    logger.debug("tries to calculate resource name")
+    if resource["change"]["before"] is not None:
+        if "name" in resource["change"]["before"]:
+            beforeName = resource["change"]["before"]["name"]
+            logger.debug("beforeName: %s", beforeName)
+    if resource["change"]["after"] is not None:
+        if "name" in resource["change"]["after"]:
+            afterName = resource["change"]["after"]["name"]
+            logger.debug("afterName: %s", afterName)
+
+    if afterName and beforeName and (afterName != beforeName):
+        name = beforeName + " --> " + afterName
+    elif afterName and beforeName:
+        name = beforeName
+    elif beforeName and (afterName is not None):
+        name = beforeName
+    elif afterName and (beforeName is not None):
+        name = afterName
+    else:
+        name = "<known after apply>"
+
+    return name
+
+
 def parseResource(resource):
     """
     Parse Resource to retrieve metadata.
 
     Args:
-        resource(): Resource object
+        resource(dict): Resource object
 
     Returns:
         Dict with resources attributes
@@ -74,8 +113,9 @@ def parseResource(resource):
 
     logger.debug("retrieve elements from resource")
     rc = {
-        "address": resource["address"],
         "actions": resource["change"]["actions"],
+        "name": calculateName(resource),
+        "address": resource["address"],
     }
     return rc
 
