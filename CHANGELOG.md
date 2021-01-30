@@ -3,11 +3,38 @@
 ## [Unreleased]
 
 
+<a name="0.4.0"></a>
+## [0.4.0] - 2021-01-30
+### Feat
+- **azuredevops:** added azure devops output
+
+
+<a name="0.3.4"></a>
+## [0.3.4] - 2021-01-30
+### Chore
+- remove requirements.txt
+
+
+<a name="0.3.3"></a>
+## [0.3.3] - 2021-01-30
+### Chore
+- update build information
+
+
+<a name="0.3.2"></a>
+## [0.3.2] - 2021-01-30
+### Docs
+- update docs with usage
+
+
 <a name="0.3.1"></a>
 ## [0.3.1] - 2021-01-30
 ### Docs
 - update setup classifier
 - update module documentation
+
+### Pull Requests
+- Merge pull request [#6](https://github.com/bcochofel/terraplanfeed/issues/6) from bcochofel/update_stdout_doc
 
 
 <a name="0.3.0"></a>
@@ -91,7 +118,11 @@
 - Merge pull request [#1](https://github.com/bcochofel/terraplanfeed/issues/1) from bcochofel/package_skel
 
 
-[Unreleased]: https://github.com/bcochofel/terraplanfeed/compare/0.3.1...HEAD
+[Unreleased]: https://github.com/bcochofel/terraplanfeed/compare/0.4.0...HEAD
+[0.4.0]: https://github.com/bcochofel/terraplanfeed/compare/0.3.4...0.4.0
+[0.3.4]: https://github.com/bcochofel/terraplanfeed/compare/0.3.3...0.3.4
+[0.3.3]: https://github.com/bcochofel/terraplanfeed/compare/0.3.2...0.3.3
+[0.3.2]: https://github.com/bcochofel/terraplanfeed/compare/0.3.1...0.3.2
 [0.3.1]: https://github.com/bcochofel/terraplanfeed/compare/0.3.0...0.3.1
 [0.3.0]: https://github.com/bcochofel/terraplanfeed/compare/0.2.0...0.3.0
 [0.2.0]: https://github.com/bcochofel/terraplanfeed/compare/0.1.3...0.2.0
