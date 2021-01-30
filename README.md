@@ -9,9 +9,9 @@ This tool parses Terraform plan files in JSON format and gives feedback about th
 This tool aims to parse Terraform plan files (in JSON format) and gives feedback to several types of outputs.
 
 Outputs can be:
-* stdout
-* Github pull request comment
-* Azure DevOps pull request comment
+* stdout: stdout
+* github: Github pull request comment (not yet implemented)
+* azuredevops: Azure DevOps pull request comment (not yet implemented)
 
 To create the Terraform plan file:
 
@@ -19,6 +19,35 @@ To create the Terraform plan file:
 terraform init
 terraform plan -out=plan.out
 terraform show -no-color -json plan.out > plan.json
+```
+
+# Usage
+
+To write to stdout you just need to pass a JSON file:
+
+```bash
+❯ terraplanfeed ../tfplan/example.json
+
+Summary of changes:
+===================
+
+
+(Create): <known after apply> (module.failover_rg.azurerm_resource_group.rg)
+(Create): <known after apply> (module.failover_rg.module.naming.random_string.first_letter)
+(Create): <known after apply> (module.failover_rg.module.naming.random_string.main)
+(Create): <known after apply> (module.rg.azurerm_resource_group.rg)
+(Create): <known after apply> (module.rg.module.naming.random_string.first_letter)
+(Create): <known after apply> (module.rg.module.naming.random_string.main)
+(Create): <known after apply> (module.sql.azurerm_storage_account.audit1)
+(Create): <known after apply> (module.sql.azurerm_storage_account.audit2[0])
+(Create): <known after apply> (module.sql.module.naming.random_string.first_letter)
+(Create): <known after apply> (module.sql.module.naming.random_string.main)
+(Create): <known after apply> (module.sql.module.naming_failover.random_string.first_letter)
+(Create): <known after apply> (module.sql.module.naming_failover.random_string.main)
+
+
+
+
 ```
 
 # Run and test locally
