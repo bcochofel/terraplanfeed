@@ -12,12 +12,19 @@ import os
 import json
 
 from terraplanfeed.terraform import parsePlan
+from terraplanfeed.stdout import writeToStdout
 
 logger = logging.getLogger(__name__)
 
 
-def terraplanfeed(filename):
-    """Execute terraplanfeed."""
+def terraplanfeed(filename, output):
+    """
+    Execute terraplanfeed.
+
+    Args:
+        filename: Terraform plan in JSON format
+        output: output driver to write feedback
+    """
 
     """Open JSON file"""
     logger.debug("reading file %s", filename)
@@ -29,4 +36,6 @@ def terraplanfeed(filename):
             sys.exit(1)
 
     resources = parsePlan(tf)
-    print(resources)
+
+    if output.lower() == "stdout":
+        writeToStdout(resources)

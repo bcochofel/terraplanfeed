@@ -7,6 +7,7 @@ Arguments:
     <filename> (required): terraform plan in json format
     -v, --verbose: prints debug information
     -d, --debug-file: filename to print debug information
+    -o, --output: output driver
 """
 
 import os
@@ -43,14 +44,21 @@ def version_msg():
     default=None,
     help="Print debug information to this file",
 )
-def main(filename, verbose, debug_file):
+@click.option(
+    "-o",
+    "--output",
+    type=click.Choice(["stdout", "azuredevops"], case_sensitive=False),
+    default="stdout",
+    help="Output driver",
+)
+def main(filename, verbose, debug_file, output):
     """Parse Terraform plan in JSON format."""
 
     configure_logger(
         stream_level="DEBUG" if verbose else "INFO", debug_file=debug_file
     )
 
-    terraplanfeed(filename)
+    terraplanfeed(filename, output)
 
 
 if __name__ == "__main__":
