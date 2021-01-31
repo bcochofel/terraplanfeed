@@ -85,7 +85,7 @@ def write(content):
     print(FOOTER)
 
 
-def main(changes):
+def generate_stdout(changes):
     """
     Entrypoint for stdout output driver.
 

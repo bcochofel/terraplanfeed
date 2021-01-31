@@ -30,7 +30,7 @@ import logging
 import os
 import base64
 import requests
-import terraplanfeed.stdout as stdout
+from terraplanfeed.stdout import generate_stdout
 
 logger = logging.getLogger(__name__)
 
@@ -217,7 +217,7 @@ def sendRequest(url, data):
     return response.status_code
 
 
-def main(changes):
+def generate_pr_comment(changes):
     """
     Handles changes and formats content to send to Azure DevOps API.
 
@@ -225,6 +225,7 @@ def main(changes):
         changes(list): list of resources dict
     """
 
+    ret = False
     logger.debug("azure devops entrypoint")
     if not changes:
         content = "No changes " + ACTION_SYMBOLS["no-op"]
@@ -239,5 +240,10 @@ def main(changes):
         url = formatUrl()
         retcode = sendRequest(url, data)
         logger.debug("status code: {}".format(retcode))
+        if retcode == 200:
+            ret = True
     else:
-        stdout.write(content)
+        generate_stdout(content)
+        ret = True
+
+    return ret
