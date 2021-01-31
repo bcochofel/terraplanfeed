@@ -8,12 +8,11 @@ Functions:
 """
 import logging
 import sys
-import os
 import json
 
 from terraplanfeed.terraform import parsePlan
-import terraplanfeed.stdout as stdout
-import terraplanfeed.azuredevops as azuredevops
+from terraplanfeed.stdout import generate_stdout
+from terraplanfeed.azuredevops import generate_pr_comment
 
 logger = logging.getLogger(__name__)
 
@@ -25,6 +24,9 @@ def terraplanfeed(filename, output):
     Args:
         filename: Terraform plan in JSON format
         output: output driver to write feedback
+
+    Returns:
+        Boolean
     """
 
     """Open JSON file"""
@@ -39,6 +41,6 @@ def terraplanfeed(filename, output):
     resources = parsePlan(tf)
 
     if output.lower() == "azuredevops":
-        azuredevops.main(resources)
+        generate_pr_comment(resources)
     else:
-        stdout.main(resources)
+        generate_stdout(resources)
