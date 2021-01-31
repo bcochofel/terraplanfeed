@@ -6,7 +6,8 @@ https://www.terraform.io/docs/internals/json-format.html#change-representation
 Functions:
     getAction: gets the action from actions list
     parseChanges: gets list of changes and creates multiline summary
-    writeToStdout: writes the summary content to stdout
+    write: writes the summary content to stdout
+    main: entrypoint
 """
 import logging
 
@@ -22,9 +23,8 @@ ACTION_SYMBOLS = {
 }
 
 HEADER = """
-Summary of changes:
-===================
-
+**Terraform Plan changes summary:**
+===================================
 """
 
 FOOTER = """
@@ -71,16 +71,31 @@ def parseChanges(changes):
     return content
 
 
-def writeToStdout(changes):
+def write(content):
     """
     Writes summary of changes to stdout.
+
+    Args:
+        content(str): multiline string
+    """
+
+    logger.debug("write to stdout")
+    print(HEADER)
+    print(content)
+    print(FOOTER)
+
+
+def main(changes):
+    """
+    Entrypoint for stdout output driver.
 
     Args:
         changes(list): list of resources dict
     """
 
-    logger.debug("write to stdout...")
-    content = parseChanges(changes)
-    print(HEADER)
-    print(content)
-    print(FOOTER)
+    logger.debug("stdout entrypoint")
+    if not changes:
+        content = "No changes"
+    else:
+        content = parseChanges(changes)
+    write(content)
