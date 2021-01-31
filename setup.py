@@ -34,7 +34,7 @@ setup(
     package_dir={"terraplanfeed": "terraplanfeed"},
     packages=find_packages(where="terraplanfeed"),
     python_requires=">=3.7, <4",
-    install_requires=["Click", "Black", "Requests"],
+    install_requires=["Click", "Requests"],
     entry_points={
         "console_scripts": ["terraplanfeed=terraplanfeed.__main__:main"]
     },
