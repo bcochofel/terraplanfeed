@@ -28,7 +28,6 @@ Functions:
 """
 import logging
 import os
-import json
 import base64
 import requests
 import terraplanfeed.stdout as stdout
@@ -40,6 +39,7 @@ URLCOMPONENTS = {
     "PROJ": os.getenv("SYSTEM_TEAMPROJECT"),
     "REPOSITORYID": os.getenv("BUILD_REPOSITORY_ID"),
     "PULLREQUESTID": os.getenv("SYSTEM_PULLREQUEST_PULLREQUESTID"),
+    "APIVERSION": "6.0",
 }
 
 COMMENTTYPE = {
@@ -134,6 +134,8 @@ def validateEnvVars():
         return False
     if URLCOMPONENTS["PULLREQUESTID"] is None:
         return False
+    if os.getenv("SYSTEM_ACCESSTOKEN") is None:
+        return False
 
     return True
 
@@ -147,11 +149,12 @@ def formatUrl():
 
     url = ""
     logger.debug("format url")
-    url = "{url}{proj}/_apis/git/repositories/{repoid}/pullRequests/{prid}/threads?api-version=5.1".format(
+    url = "{url}{proj}/_apis/git/repositories/{repoid}/pullRequests/{prid}/threads?api-version={apiversion}".format(
         url=URLCOMPONENTS["URL"],
         proj=URLCOMPONENTS["PROJ"],
         repoid=URLCOMPONENTS["REPOSITORYID"],
         prid=URLCOMPONENTS["PULLREQUESTID"],
+        apiversion=URLCOMPONENTS["APIVERSION"],
     )
 
     return url
@@ -167,7 +170,7 @@ def formatDataToSend(content, commentType, statusCode):
         statusCode(str): status code
 
     Returns:
-        content in JSON format
+        dict with the content
     """
 
     formattedContent = HEADER + content + FOOTER
@@ -182,7 +185,7 @@ def formatDataToSend(content, commentType, statusCode):
         "status": statusCode,
     }
 
-    return json.dumps(data)
+    return data
 
 
 def sendRequest(url, data):
@@ -192,21 +195,26 @@ def sendRequest(url, data):
     Args:
         url: URL to send request
         data: json content to send to API
-        token: Access token
+
+    Returns:
+        True or False based on the send request
     """
 
     logger.debug("send request")
-    # r = requests.post(
-    #    url,
-    #    json=data,
-    #    headers={
-    #        "Content-Type": "application/json",
-    #        "Authorization": "Basic {}".format(token),
-    #    },
-    # )
+    logger.debug("url: {}".format(url))
+    logger.debug("data: {}".format(data))
 
-    print(url)
-    print(data)
+    token = os.getenv("SYSTEM_ACCESSTOKEN")
+    access_token = ":{}".format(token)
+
+    encodedBytes = base64.b64encode(access_token.encode("utf-8"))
+    encodedStr = str(encodedBytes, "utf-8")
+
+    session = requests.Session()
+    session.headers["Authorization"] = "Basic {}".format(encodedStr)
+    response = session.post(url, json=data)
+
+    return response.status_code
 
 
 def main(changes):
@@ -229,6 +237,7 @@ def main(changes):
     data = formatDataToSend(content, commentType, statusCode)
     if validateEnvVars():
         url = formatUrl()
-        sendRequest(url, data)
+        retcode = sendRequest(url, data)
+        logger.debug("status code: {}".format(retcode))
     else:
         stdout.write(content)
