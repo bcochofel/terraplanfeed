@@ -3,10 +3,19 @@
 ## [Unreleased]
 
 
+<a name="0.5.0"></a>
+## [0.5.0] - 2021-01-31
+### Feat
+- build workflow
+
+
 <a name="0.4.1"></a>
 ## [0.4.1] - 2021-01-31
 ### Docs
 - update docs
+
+### Pull Requests
+- Merge pull request [#8](https://github.com/bcochofel/terraplanfeed/issues/8) from bcochofel/update_docs
 
 
 <a name="0.4.0"></a>
@@ -128,7 +137,8 @@
 - Merge pull request [#1](https://github.com/bcochofel/terraplanfeed/issues/1) from bcochofel/package_skel
 
 
-[Unreleased]: https://github.com/bcochofel/terraplanfeed/compare/0.4.1...HEAD
+[Unreleased]: https://github.com/bcochofel/terraplanfeed/compare/0.5.0...HEAD
+[0.5.0]: https://github.com/bcochofel/terraplanfeed/compare/0.4.1...0.5.0
 [0.4.1]: https://github.com/bcochofel/terraplanfeed/compare/0.4.0...0.4.1
 [0.4.0]: https://github.com/bcochofel/terraplanfeed/compare/0.3.4...0.4.0
 [0.3.4]: https://github.com/bcochofel/terraplanfeed/compare/0.3.3...0.3.4

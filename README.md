@@ -46,6 +46,13 @@ Summary of changes:
 
 ```
 
+```bash
+❯ terraplanfeed ../tfplan/example.json -o azuredevops
+
+```
+
+
+
 To use this on Azure DevOps you need the following environment variables:
 * SYSTEM_TEAMFOUNDATIONSERVERURI
 * SYSTEM_TEAMPROJECT
