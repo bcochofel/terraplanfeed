@@ -10,8 +10,8 @@ This tool aims to parse Terraform plan files (in JSON format) and gives feedback
 
 Outputs can be:
 * stdout: stdout
+* azuredevops: Azure DevOps pull request comment
 * github: Github pull request comment (not yet implemented)
-* azuredevops: Azure DevOps pull request comment (not yet implemented)
 
 To create the Terraform plan file:
 
@@ -31,7 +31,6 @@ To write to stdout you just need to pass a JSON file:
 Summary of changes:
 ===================
 
-
 (Create): <known after apply> (module.failover_rg.azurerm_resource_group.rg)
 (Create): <known after apply> (module.failover_rg.module.naming.random_string.first_letter)
 (Create): <known after apply> (module.failover_rg.module.naming.random_string.main)
@@ -45,10 +44,21 @@ Summary of changes:
 (Create): <known after apply> (module.sql.module.naming_failover.random_string.first_letter)
 (Create): <known after apply> (module.sql.module.naming_failover.random_string.main)
 
-
-
-
 ```
+
+To use this on Azure DevOps you need the following environment variables:
+* SYSTEM_TEAMFOUNDATIONSERVERURI
+* SYSTEM_TEAMPROJECT
+* BUILD_REPOSITORY_ID
+* SYSTEM_PULLREQUEST_PULLREQUESTID
+* SYSTEM_ACCESSTOKEN
+
+these environment variables are present when you run Azure DevOps pipelines.
+
+**Note:** The `SYSTEM_PULLREQUEST_PULLREQUESTID` is only present when you run
+pipeline in a pull request.
+
+If any of these environment variables are not present, output defaults to stdout
 
 # Run and test locally
 
