@@ -3,11 +3,20 @@
 ## [Unreleased]
 
 
+<a name="0.4.1"></a>
+## [0.4.1] - 2021-01-31
+### Docs
+- update docs
+
+
 <a name="0.4.0"></a>
 ## [0.4.0] - 2021-01-31
 ### Feat
 - **azuredevops:** send request
 - **azuredevops:** added azure devops output
+
+### Pull Requests
+- Merge pull request [#7](https://github.com/bcochofel/terraplanfeed/issues/7) from bcochofel/azuredevops
 
 
 <a name="0.3.4"></a>
@@ -119,7 +128,8 @@
 - Merge pull request [#1](https://github.com/bcochofel/terraplanfeed/issues/1) from bcochofel/package_skel
 
 
-[Unreleased]: https://github.com/bcochofel/terraplanfeed/compare/0.4.0...HEAD
+[Unreleased]: https://github.com/bcochofel/terraplanfeed/compare/0.4.1...HEAD
+[0.4.1]: https://github.com/bcochofel/terraplanfeed/compare/0.4.0...0.4.1
 [0.4.0]: https://github.com/bcochofel/terraplanfeed/compare/0.3.4...0.4.0
 [0.3.4]: https://github.com/bcochofel/terraplanfeed/compare/0.3.3...0.3.4
 [0.3.3]: https://github.com/bcochofel/terraplanfeed/compare/0.3.2...0.3.3
