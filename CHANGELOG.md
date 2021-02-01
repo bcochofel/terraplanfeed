@@ -3,10 +3,19 @@
 ## [Unreleased]
 
 
+<a name="0.6.3"></a>
+## [0.6.3] - 2021-02-01
+### Fix
+- setup
+
+
 <a name="0.6.2"></a>
 ## [0.6.2] - 2021-01-31
 ### Fix
 - imports
+
+### Pull Requests
+- Merge pull request [#12](https://github.com/bcochofel/terraplanfeed/issues/12) from bcochofel/fix_imports
 
 
 <a name="0.6.1"></a>
@@ -164,7 +173,8 @@
 - Merge pull request [#1](https://github.com/bcochofel/terraplanfeed/issues/1) from bcochofel/package_skel
 
 
-[Unreleased]: https://github.com/bcochofel/terraplanfeed/compare/0.6.2...HEAD
+[Unreleased]: https://github.com/bcochofel/terraplanfeed/compare/0.6.3...HEAD
+[0.6.3]: https://github.com/bcochofel/terraplanfeed/compare/0.6.2...0.6.3
 [0.6.2]: https://github.com/bcochofel/terraplanfeed/compare/0.6.1...0.6.2
 [0.6.1]: https://github.com/bcochofel/terraplanfeed/compare/0.6.0...0.6.1
 [0.6.0]: https://github.com/bcochofel/terraplanfeed/compare/0.5.0...0.6.0
