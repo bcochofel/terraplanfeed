@@ -30,9 +30,8 @@ setup(
         "Programming Language :: Python :: 3.9",
         "Topic :: Software Development :: Build Tools",
     ],
-    keywords=["terraplanfeed", "Python", "terraform", "terraform plan"],
-    package_dir={"terraplanfeed": "terraplanfeed"},
-    packages=find_packages(where="terraplanfeed"),
+    keywords=["terraplanfeed", "Python", "Terraform", "Terraform Plan"],
+    packages=["terraplanfeed"],
     python_requires=">=3.7, <4",
     install_requires=["Click", "Requests"],
     entry_points={
