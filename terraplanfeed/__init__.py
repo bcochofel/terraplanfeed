@@ -7,4 +7,4 @@ changes, and creates output that can be sent to different output drivers.
 Modules:
     terraform
 """
-__version__ = "0.6.3"
+__version__ = "0.6.4"

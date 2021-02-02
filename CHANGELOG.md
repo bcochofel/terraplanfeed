@@ -3,10 +3,19 @@
 ## [Unreleased]
 
 
+<a name="0.6.4"></a>
+## [0.6.4] - 2021-02-02
+### Fix
+- output when azuredevops is false
+
+
 <a name="0.6.3"></a>
 ## [0.6.3] - 2021-02-01
 ### Fix
 - setup
+
+### Pull Requests
+- Merge pull request [#13](https://github.com/bcochofel/terraplanfeed/issues/13) from bcochofel/fix_setup
 
 
 <a name="0.6.2"></a>
@@ -173,7 +182,8 @@
 - Merge pull request [#1](https://github.com/bcochofel/terraplanfeed/issues/1) from bcochofel/package_skel
 
 
-[Unreleased]: https://github.com/bcochofel/terraplanfeed/compare/0.6.3...HEAD
+[Unreleased]: https://github.com/bcochofel/terraplanfeed/compare/0.6.4...HEAD
+[0.6.4]: https://github.com/bcochofel/terraplanfeed/compare/0.6.3...0.6.4
 [0.6.3]: https://github.com/bcochofel/terraplanfeed/compare/0.6.2...0.6.3
 [0.6.2]: https://github.com/bcochofel/terraplanfeed/compare/0.6.1...0.6.2
 [0.6.1]: https://github.com/bcochofel/terraplanfeed/compare/0.6.0...0.6.1
