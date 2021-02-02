@@ -30,7 +30,7 @@ import logging
 import os
 import base64
 import requests
-from terraplanfeed.stdout import generate_stdout
+from terraplanfeed.stdout import write
 
 logger = logging.getLogger(__name__)
 
@@ -243,7 +243,7 @@ def generate_pr_comment(changes):
         if retcode == 200:
             ret = True
     else:
-        generate_stdout(content)
+        write(content)
         ret = True
 
     return ret
