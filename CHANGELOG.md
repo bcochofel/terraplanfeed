@@ -3,10 +3,19 @@
 ## [Unreleased]
 
 
+<a name="0.7.0"></a>
+## [0.7.0] - 2021-02-12
+### Feat
+- unicode emoji
+
+
 <a name="0.6.4"></a>
 ## [0.6.4] - 2021-02-02
 ### Fix
 - output when azuredevops is false
+
+### Pull Requests
+- Merge pull request [#14](https://github.com/bcochofel/terraplanfeed/issues/14) from bcochofel/fix_output
 
 
 <a name="0.6.3"></a>
@@ -182,7 +191,8 @@
 - Merge pull request [#1](https://github.com/bcochofel/terraplanfeed/issues/1) from bcochofel/package_skel
 
 
-[Unreleased]: https://github.com/bcochofel/terraplanfeed/compare/0.6.4...HEAD
+[Unreleased]: https://github.com/bcochofel/terraplanfeed/compare/0.7.0...HEAD
+[0.7.0]: https://github.com/bcochofel/terraplanfeed/compare/0.6.4...0.7.0
 [0.6.4]: https://github.com/bcochofel/terraplanfeed/compare/0.6.3...0.6.4
 [0.6.3]: https://github.com/bcochofel/terraplanfeed/compare/0.6.2...0.6.3
 [0.6.2]: https://github.com/bcochofel/terraplanfeed/compare/0.6.1...0.6.2
