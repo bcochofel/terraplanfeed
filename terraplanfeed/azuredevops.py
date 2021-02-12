@@ -59,13 +59,22 @@ COMMENTTHREADSTATUS = {
     "WONTFIX": "wontFix",
 }
 
+# ACTION_SYMBOLS = {
+#    "no-op": ":thumbsup:",
+#    "create": ":sparkles:",
+#    "read": ":open_book:",
+#    "update": ":pencil2:",
+#    "replace": ":warning:",
+#    "delete": ":stop_sign:",
+# }
+
 ACTION_SYMBOLS = {
-    "no-op": ":thumbsup:",
-    "create": ":sparkles:",
-    "read": ":open_book:",
-    "update": ":pencil2:",
-    "replace": ":warning:",
-    "delete": ":stop_sign:",
+    "no-op": "👍",
+    "create": "✨",
+    "read": "📖",
+    "update": "✏️",
+    "replace": "⚠️",
+    "delete": "🛑",
 }
 
 HEADER = """
