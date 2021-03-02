@@ -14,12 +14,12 @@ import logging
 logger = logging.getLogger(__name__)
 
 ACTION_SYMBOLS = {
-    "no-op": "None",
-    "create": "Create",
-    "read": "Read",
-    "update": "Update",
-    "replace": "Replace",
-    "delete": "Delete",
+    "no-op": "👍",
+    "create": "✨",
+    "read": "📖",
+    "update": "📝",
+    "replace": "🚧",
+    "delete": "🛑",
 }
 
 HEADER = """

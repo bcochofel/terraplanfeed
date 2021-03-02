@@ -34,14 +34,6 @@ from terraplanfeed.stdout import write
 
 logger = logging.getLogger(__name__)
 
-URLCOMPONENTS = {
-    "URL": os.getenv("SYSTEM_TEAMFOUNDATIONSERVERURI"),
-    "PROJ": os.getenv("SYSTEM_TEAMPROJECT"),
-    "REPOSITORYID": os.getenv("BUILD_REPOSITORY_ID"),
-    "PULLREQUESTID": os.getenv("SYSTEM_PULLREQUEST_PULLREQUESTID"),
-    "APIVERSION": "6.0",
-}
-
 COMMENTTYPE = {
     "CODECHANGE": "codeChange",
     "SYSTEM": "system",
@@ -59,21 +51,12 @@ COMMENTTHREADSTATUS = {
     "WONTFIX": "wontFix",
 }
 
-# ACTION_SYMBOLS = {
-#    "no-op": ":thumbsup:",
-#    "create": ":sparkles:",
-#    "read": ":open_book:",
-#    "update": ":pencil2:",
-#    "replace": ":warning:",
-#    "delete": ":stop_sign:",
-# }
-
 ACTION_SYMBOLS = {
     "no-op": "👍",
     "create": "✨",
     "read": "📖",
-    "update": "✏️",
-    "replace": "⚠️",
+    "update": "📝",
+    "replace": "🚧",
     "delete": "🛑",
 }
 
@@ -126,32 +109,56 @@ def parseChanges(changes):
     return content
 
 
-def validateEnvVars():
+def emptyString(s):
+    """
+    Validates if string id empty
+
+    Args:
+        s(str): String to check
+
+    Returns:
+        boolean true or false if string is empty or not
+    """
+
+    logger.debug("check if {} is empty".format(s))
+    if not (s and s.strip()):
+        return True
+
+    return False
+
+
+def validateEnvVars(azdo):
     """
     Validates the contents of the required env variables
+
+    Args:
+        azdo(dict): Azure DevOps parameters
 
     Returns:
         boolean true or false if they are present
     """
 
-    logger.debug("check required env variables")
-    if URLCOMPONENTS["URL"] is None:
+    logger.debug("check required parameters")
+    if emptyString(azdo["organization"]):
         return False
-    if URLCOMPONENTS["PROJ"] is None:
+    if emptyString(azdo["project"]):
         return False
-    if URLCOMPONENTS["REPOSITORYID"] is None:
+    if emptyString(azdo["repository"]):
         return False
-    if URLCOMPONENTS["PULLREQUESTID"] is None:
+    if emptyString(azdo["pullrequest"]):
         return False
-    if os.getenv("SYSTEM_ACCESSTOKEN") is None:
+    if emptyString(azdo["accesstoken"]):
         return False
 
     return True
 
 
-def formatUrl():
+def formatUrl(azdo):
     """
     Formats URL using environment variables.
+
+    Args:
+        azdo(dict): Azure DevOps parameters
 
     Returns: url
     """
@@ -159,11 +166,11 @@ def formatUrl():
     url = ""
     logger.debug("format url")
     url = "{url}{proj}/_apis/git/repositories/{repoid}/pullRequests/{prid}/threads?api-version={apiversion}".format(
-        url=URLCOMPONENTS["URL"],
-        proj=URLCOMPONENTS["PROJ"],
-        repoid=URLCOMPONENTS["REPOSITORYID"],
-        prid=URLCOMPONENTS["PULLREQUESTID"],
-        apiversion=URLCOMPONENTS["APIVERSION"],
+        url=azdo["organization"],
+        proj=azdo["project"],
+        repoid=azdo["repository"],
+        prid=azdo["pullrequest"],
+        apiversion=azdo["apiversion"],
     )
 
     return url
@@ -197,13 +204,14 @@ def formatDataToSend(content, commentType, statusCode):
     return data
 
 
-def sendRequest(url, data):
+def sendRequest(url, data, azdo):
     """
     Sends request to Azure DevOps API.
 
     Args:
         url: URL to send request
         data: json content to send to API
+        azdo(dict): Azure DevOps parameters
 
     Returns:
         True or False based on the send request
@@ -213,7 +221,7 @@ def sendRequest(url, data):
     logger.debug("url: {}".format(url))
     logger.debug("data: {}".format(data))
 
-    token = os.getenv("SYSTEM_ACCESSTOKEN")
+    token = azdo["accesstoken"]
     access_token = ":{}".format(token)
 
     encodedBytes = base64.b64encode(access_token.encode("utf-8"))
@@ -226,12 +234,13 @@ def sendRequest(url, data):
     return response.status_code
 
 
-def generate_pr_comment(changes):
+def generate_pr_comment(changes, azdo):
     """
     Handles changes and formats content to send to Azure DevOps API.
 
     Args:
         changes(list): list of resources dict
+        azdo(dict): Azure DevOps parameters
     """
 
     ret = False
@@ -245,9 +254,11 @@ def generate_pr_comment(changes):
         commentType = COMMENTTYPE["CODECHANGE"]
         statusCode = COMMENTTHREADSTATUS["ACTIVE"]
     data = formatDataToSend(content, commentType, statusCode)
-    if validateEnvVars():
-        url = formatUrl()
-        retcode = sendRequest(url, data)
+    url = formatUrl(azdo)
+    print(url)
+    if validateEnvVars(azdo):
+        url = formatUrl(azdo)
+        retcode = sendRequest(url, data, azdo)
         logger.debug("status code: {}".format(retcode))
         if retcode == 200:
             ret = True

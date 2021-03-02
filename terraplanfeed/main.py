@@ -17,13 +17,14 @@ from terraplanfeed.azuredevops import generate_pr_comment
 logger = logging.getLogger(__name__)
 
 
-def terraplanfeed(filename, output):
+def terraplanfeed(filename, output, azdo):
     """
     Execute terraplanfeed.
 
     Args:
-        filename: Terraform plan in JSON format
-        output: output driver to write feedback
+        filename(str): Terraform plan in JSON format
+        output(str): output driver to write feedback
+        azdo(dict): Azure DevOps parameters
 
     Returns:
         Boolean
@@ -41,6 +42,6 @@ def terraplanfeed(filename, output):
     resources = parsePlan(tf)
 
     if output.lower() == "azuredevops":
-        generate_pr_comment(resources)
+        generate_pr_comment(resources, azdo)
     else:
         generate_stdout(resources)
