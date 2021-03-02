@@ -254,8 +254,6 @@ def generate_pr_comment(changes, azdo):
         commentType = COMMENTTYPE["CODECHANGE"]
         statusCode = COMMENTTHREADSTATUS["ACTIVE"]
     data = formatDataToSend(content, commentType, statusCode)
-    url = formatUrl(azdo)
-    print(url)
     if validateEnvVars(azdo):
         url = formatUrl(azdo)
         retcode = sendRequest(url, data, azdo)
