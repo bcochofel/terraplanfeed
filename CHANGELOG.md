@@ -5,6 +5,9 @@
 
 <a name="0.8.0"></a>
 ## [0.8.0] - 2021-03-02
+### Chore
+- remove debug info
+
 ### Feat
 - config usgin envparse
 
