@@ -3,13 +3,31 @@
 ## [Unreleased]
 
 
+<a name="0.9.1"></a>
+## [0.9.1] - 2021-03-03
+### Fix
+- new release
+
+
+<a name="0.9.0"></a>
+## [0.9.0] - 2021-03-03
+### Feat
+- install requirements update
+
+### Pull Requests
+- Merge pull request [#18](https://github.com/bcochofel/terraplanfeed/issues/18) from bcochofel/fix_requirements
+
+
 <a name="0.8.0"></a>
-## [0.8.0] - 2021-03-02
+## [0.8.0] - 2021-03-03
 ### Chore
 - remove debug info
 
 ### Feat
 - config usgin envparse
+
+### Pull Requests
+- Merge pull request [#17](https://github.com/bcochofel/terraplanfeed/issues/17) from bcochofel/envparse_config
 
 
 <a name="0.7.0"></a>
@@ -203,7 +221,9 @@
 - Merge pull request [#1](https://github.com/bcochofel/terraplanfeed/issues/1) from bcochofel/package_skel
 
 
-[Unreleased]: https://github.com/bcochofel/terraplanfeed/compare/0.8.0...HEAD
+[Unreleased]: https://github.com/bcochofel/terraplanfeed/compare/0.9.1...HEAD
+[0.9.1]: https://github.com/bcochofel/terraplanfeed/compare/0.9.0...0.9.1
+[0.9.0]: https://github.com/bcochofel/terraplanfeed/compare/0.8.0...0.9.0
 [0.8.0]: https://github.com/bcochofel/terraplanfeed/compare/0.7.0...0.8.0
 [0.7.0]: https://github.com/bcochofel/terraplanfeed/compare/0.6.4...0.7.0
 [0.6.4]: https://github.com/bcochofel/terraplanfeed/compare/0.6.3...0.6.4
