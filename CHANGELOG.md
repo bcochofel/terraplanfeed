@@ -3,10 +3,22 @@
 ## [Unreleased]
 
 
+<a name="0.8.0"></a>
+## [0.8.0] - 2021-03-02
+### Chore
+- remove debug info
+
+### Feat
+- config usgin envparse
+
+
 <a name="0.7.0"></a>
 ## [0.7.0] - 2021-02-12
 ### Feat
 - unicode emoji
+
+### Pull Requests
+- Merge pull request [#15](https://github.com/bcochofel/terraplanfeed/issues/15) from bcochofel/unicode_emoji
 
 
 <a name="0.6.4"></a>
@@ -191,7 +203,8 @@
 - Merge pull request [#1](https://github.com/bcochofel/terraplanfeed/issues/1) from bcochofel/package_skel
 
 
-[Unreleased]: https://github.com/bcochofel/terraplanfeed/compare/0.7.0...HEAD
+[Unreleased]: https://github.com/bcochofel/terraplanfeed/compare/0.8.0...HEAD
+[0.8.0]: https://github.com/bcochofel/terraplanfeed/compare/0.7.0...0.8.0
 [0.7.0]: https://github.com/bcochofel/terraplanfeed/compare/0.6.4...0.7.0
 [0.6.4]: https://github.com/bcochofel/terraplanfeed/compare/0.6.3...0.6.4
 [0.6.3]: https://github.com/bcochofel/terraplanfeed/compare/0.6.2...0.6.3

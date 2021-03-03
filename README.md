@@ -4,11 +4,12 @@
 
 This tool parses Terraform plan files in JSON format and gives feedback about the changes.
 
-# Description
+## Description
 
 This tool aims to parse Terraform plan files (in JSON format) and gives feedback to several types of outputs.
 
 Outputs can be:
+
 * stdout: stdout
 * azuredevops: Azure DevOps pull request comment
 * github: Github pull request comment (not yet implemented)
@@ -21,7 +22,7 @@ terraform plan -out=plan.out
 terraform show -no-color -json plan.out > plan.json
 ```
 
-# Usage
+## Usage
 
 To write to stdout you just need to pass a JSON file:
 
@@ -51,9 +52,8 @@ Summary of changes:
 
 ```
 
-
-
 To use this on Azure DevOps you need the following environment variables:
+
 * SYSTEM_TEAMFOUNDATIONSERVERURI
 * SYSTEM_TEAMPROJECT
 * BUILD_REPOSITORY_ID
@@ -67,13 +67,13 @@ pipeline in a pull request.
 
 If any of these environment variables are not present, output defaults to stdout
 
-# Run and test locally
+## Run and test locally
 
 ```bash
 python3 -m pip install --editable .
 ```
 
-# Build and upload to PyPI
+## Build and upload to PyPI
 
 To build and upload to Test PyPI repository:
 
@@ -90,15 +90,15 @@ To upload to PyPI repository:
 python3 -m twine upload dist/*
 ```
 
-# pre-commit hooks
+## pre-commit hooks
 
 Read the [pre-commit hooks](docs/pre-commit-hooks.md) document for more info.
 
-# git-chglog
+## git-chglog
 
 Read the [git-chglog](docs/git-chlog.md) document for more info.
 
-# References
+## References
 
 * [Making a Python package](https://python-packaging-tutorial.readthedocs.io/en/latest/setup_py.html)
 * [Documenting Python code](https://realpython.com/documenting-python-code/)
