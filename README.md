@@ -32,18 +32,18 @@ To write to stdout you just need to pass a JSON file:
 Summary of changes:
 ===================
 
-(Create): <known after apply> (module.failover_rg.azurerm_resource_group.rg)
-(Create): <known after apply> (module.failover_rg.module.naming.random_string.first_letter)
-(Create): <known after apply> (module.failover_rg.module.naming.random_string.main)
-(Create): <known after apply> (module.rg.azurerm_resource_group.rg)
-(Create): <known after apply> (module.rg.module.naming.random_string.first_letter)
-(Create): <known after apply> (module.rg.module.naming.random_string.main)
-(Create): <known after apply> (module.sql.azurerm_storage_account.audit1)
-(Create): <known after apply> (module.sql.azurerm_storage_account.audit2[0])
-(Create): <known after apply> (module.sql.module.naming.random_string.first_letter)
-(Create): <known after apply> (module.sql.module.naming.random_string.main)
-(Create): <known after apply> (module.sql.module.naming_failover.random_string.first_letter)
-(Create): <known after apply> (module.sql.module.naming_failover.random_string.main)
+(✨): <known after apply> (module.failover_rg.azurerm_resource_group.rg)
+(✨): <known after apply> (module.failover_rg.module.naming.random_string.first_letter)
+(✨): <known after apply> (module.failover_rg.module.naming.random_string.main)
+(✨): <known after apply> (module.rg.azurerm_resource_group.rg)
+(✨): <known after apply> (module.rg.module.naming.random_string.first_letter)
+(✨): <known after apply> (module.rg.module.naming.random_string.main)
+(✨): <known after apply> (module.sql.azurerm_storage_account.audit1)
+(✨): <known after apply> (module.sql.azurerm_storage_account.audit2[0])
+(✨): <known after apply> (module.sql.module.naming.random_string.first_letter)
+(✨): <known after apply> (module.sql.module.naming.random_string.main)
+(✨): <known after apply> (module.sql.module.naming_failover.random_string.first_letter)
+(✨): <known after apply> (module.sql.module.naming_failover.random_string.main)
 
 ```
 
