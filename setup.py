@@ -33,7 +33,7 @@ setup(
     keywords=["terraplanfeed", "Python", "Terraform", "Terraform Plan"],
     packages=["terraplanfeed"],
     python_requires=">=3.7, <4",
-    install_requires=["Click", "Requests"],
+    install_requires=["click", "requests", "envparse"],
     entry_points={
         "console_scripts": ["terraplanfeed=terraplanfeed.__main__:main"]
     },
