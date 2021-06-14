@@ -3,10 +3,16 @@
 ## [Unreleased]
 
 
+<a name="0.9.2"></a>
+## [0.9.2] - 2021-06-14
+
 <a name="0.9.1"></a>
 ## [0.9.1] - 2021-03-03
 ### Fix
 - new release
+
+### Pull Requests
+- Merge pull request [#19](https://github.com/bcochofel/terraplanfeed/issues/19) from bcochofel/fix_release
 
 
 <a name="0.9.0"></a>
@@ -221,7 +227,8 @@
 - Merge pull request [#1](https://github.com/bcochofel/terraplanfeed/issues/1) from bcochofel/package_skel
 
 
-[Unreleased]: https://github.com/bcochofel/terraplanfeed/compare/0.9.1...HEAD
+[Unreleased]: https://github.com/bcochofel/terraplanfeed/compare/0.9.2...HEAD
+[0.9.2]: https://github.com/bcochofel/terraplanfeed/compare/0.9.1...0.9.2
 [0.9.1]: https://github.com/bcochofel/terraplanfeed/compare/0.9.0...0.9.1
 [0.9.0]: https://github.com/bcochofel/terraplanfeed/compare/0.8.0...0.9.0
 [0.8.0]: https://github.com/bcochofel/terraplanfeed/compare/0.7.0...0.8.0
