@@ -64,6 +64,13 @@ def version_msg():
     help="Output driver",
 )
 @click.option(
+    "-t",
+    "--textonly",
+    is_flag=True,
+    help="Text-only output (disable emoji)",
+    default=False,
+)
+@click.option(
     "--azdo-organization",
     default=env.str("SYSTEM_TEAMFOUNDATIONSERVERURI"),
     help="Azure DevOps Organization Service URL",
@@ -98,6 +105,7 @@ def main(
     verbose,
     debug_file,
     output,
+    textonly,
     azdo_organization,
     azdo_project,
     azdo_repository,
@@ -120,7 +128,7 @@ def main(
         "apiversion": azdo_apiversion,
     }
 
-    terraplanfeed(filename, output, azdo_params)
+    terraplanfeed(filename, output, azdo_params, textonly)
 
 
 if __name__ == "__main__":

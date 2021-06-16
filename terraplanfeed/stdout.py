@@ -22,6 +22,15 @@ ACTION_SYMBOLS = {
     "delete": "🛑",
 }
 
+ACTION_TEXT = {
+    "no-op": ".",
+    "create": "+",
+    "read": "r",
+    "update": "U",
+    "replace": "R",
+    "delete": "X",
+}
+
 HEADER = """
 **Terraform Plan changes summary:**
 ===================================
@@ -31,30 +40,33 @@ FOOTER = """
 """
 
 
-def getAction(actions):
+def getAction(actions, textonly):
     """
     Get action
 
     Args:
         actions(list): list of actions
+        textonly(bool): disable emoji
 
     Returns:
         action symbol
     """
 
     logger.debug("get action")
+    lookup = ACTION_TEXT if textonly else ACTION_SYMBOLS
     if "create" in actions and len(actions) > 1:
-        return ACTION_SYMBOLS["replace"]
+        return lookup["replace"]
     else:
-        return ACTION_SYMBOLS[actions[0]]
+        return lookup[actions[0]]
 
 
-def parseChanges(changes):
+def parseChanges(changes, textonly):
     """
     Parse changes.
 
     Args:
         changes(list): list of resources dict
+        textonly(bool): disable emoji
 
     Returns:
         Multiline string with summary of changes
@@ -63,7 +75,7 @@ def parseChanges(changes):
     content = ""
     logger.debug("parsing changes...")
     for c in changes:
-        action = getAction(c["actions"])
+        action = getAction(c["actions"], textonly)
         message = "({action}): {name} ({address})".format(
             action=action, name=c["name"], address=c["address"]
         )
@@ -85,17 +97,18 @@ def write(content):
     print(FOOTER)
 
 
-def generate_stdout(changes):
+def generate_stdout(changes, textonly = False):
     """
     Entrypoint for stdout output driver.
 
     Args:
         changes(list): list of resources dict
-    """
+        textonly(bool): disable emoji
+   """
 
     logger.debug("stdout entrypoint")
     if not changes:
         content = "No changes"
     else:
-        content = parseChanges(changes)
+        content = parseChanges(changes, textonly)
     write(content)
