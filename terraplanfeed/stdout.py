@@ -97,14 +97,14 @@ def write(content):
     print(FOOTER)
 
 
-def generate_stdout(changes, textonly = False):
+def generate_stdout(changes, textonly=False):
     """
     Entrypoint for stdout output driver.
 
     Args:
         changes(list): list of resources dict
         textonly(bool): disable emoji
-   """
+    """
 
     logger.debug("stdout entrypoint")
     if not changes:

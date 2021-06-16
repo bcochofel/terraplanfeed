@@ -247,7 +247,7 @@ def sendRequest(url, data, azdo):
     return response.status_code
 
 
-def generate_pr_comment(changes, azdo, textonly = False):
+def generate_pr_comment(changes, azdo, textonly=False):
     """
     Handles changes and formats content to send to Azure DevOps API.
 
