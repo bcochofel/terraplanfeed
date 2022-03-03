@@ -53,6 +53,12 @@ To monitor state drift rather than changes
 ❯ terraplanfeed --drift ../tfplan/example.json
 ```
 
+To enable detailed exit codes (0 - no changes, 1 - errored, 2 - changes found)
+
+```bash
+❯ terraplanfeed --detailed-exitcode ../tfplan/example.jso
+```
+
 To output to Azure DevOps
 
 ```bash

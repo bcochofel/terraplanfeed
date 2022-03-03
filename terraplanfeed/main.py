@@ -17,7 +17,7 @@ from terraplanfeed.azuredevops import generate_pr_comment
 logger = logging.getLogger(__name__)
 
 
-def terraplanfeed(filename, output, azdo, textonly, drift):
+def terraplanfeed(filename, output, azdo, textonly, drift, detailed_exitcode):
     """
     Execute terraplanfeed.
 
@@ -27,6 +27,7 @@ def terraplanfeed(filename, output, azdo, textonly, drift):
         azdo(dict): Azure DevOps parameters
         textonly(bool): Disable emoji
         drift(bool): Flag denoting drift mode
+        detailed_exitcode(bool): Return detailed exit codes
 
     Returns:
         Boolean
@@ -46,4 +47,4 @@ def terraplanfeed(filename, output, azdo, textonly, drift):
     if output.lower() == "azuredevops":
         generate_pr_comment(resources, azdo, textonly, drift)
     else:
-        generate_stdout(resources, textonly, drift)
+        generate_stdout(resources, textonly, drift, detailed_exitcode)

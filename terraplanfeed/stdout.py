@@ -7,9 +7,11 @@ Functions:
     getAction: gets the action from actions list
     parseChanges: gets list of changes and creates multiline summary
     write: writes the summary content to stdout
+    detexit: exit with detailed exit codes
     main: entrypoint
 """
 import logging
+import sys
 
 logger = logging.getLogger(__name__)
 
@@ -106,7 +108,22 @@ def write(content, drift):
     print(FOOTER)
 
 
-def generate_stdout(changes, textonly=False, drift=False):
+def detexit(content):
+    """
+    Exit with detailed exit codes
+
+    Args:
+        content(str): multiline string
+    """
+
+    logger.debug("exit")
+    if content != "No changes":
+        sys.exit(2)
+    else:
+        sys.exit(0)
+
+
+def generate_stdout(changes, textonly=False, drift=False, detailed_exitcode=False):
     """
     Entrypoint for stdout output driver.
 
@@ -114,6 +131,7 @@ def generate_stdout(changes, textonly=False, drift=False):
         changes(list): list of resources dict
         textonly(bool): disable emoji
         drift(bool): enable drift mode
+        detailed_exitcode(bool): enable detailed exit codes
     """
 
     logger.debug("stdout entrypoint")
@@ -122,3 +140,6 @@ def generate_stdout(changes, textonly=False, drift=False):
     else:
         content = parseChanges(changes, textonly, drift)
     write(content, drift)
+
+    if detailed_exitcode:
+        detexit(content)

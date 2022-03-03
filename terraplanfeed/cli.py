@@ -9,6 +9,7 @@ Arguments:
     -d, --debug-file: filename to print debug information
     -o, --output: output driver
     -f, --drift: process resource drift rather than changes
+    -x, --detailed-exitcode: enable detailed exit codes
 """
 
 import os
@@ -79,6 +80,13 @@ def version_msg():
     default=False,
 )
 @click.option(
+    "-x",
+    "--detailed-exitcode",
+    is_flag=True,
+    help="Enable detailed exit codes",
+    default=False,
+)
+@click.option(
     "--azdo-organization",
     default=env.str("SYSTEM_TEAMFOUNDATIONSERVERURI"),
     help="Azure DevOps Organization Service URL",
@@ -115,6 +123,7 @@ def main(
     output,
     textonly,
     drift,
+    detailed_exitcode,
     azdo_organization,
     azdo_project,
     azdo_repository,
@@ -137,7 +146,7 @@ def main(
         "apiversion": azdo_apiversion,
     }
 
-    terraplanfeed(filename, output, azdo_params, textonly, drift)
+    terraplanfeed(filename, output, azdo_params, textonly, drift, detailed_exitcode)
 
 
 if __name__ == "__main__":
