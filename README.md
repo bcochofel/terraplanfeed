@@ -2,7 +2,7 @@
 
 [![pre-commit badge][pre-commit-badge]][pre-commit] [![Conventional commits badge][conventional-commits-badge]][conventional-commits] [![Keep a Changelog v1.1.0 badge][keep-a-changelog-badge]][keep-a-changelog] [![MIT License Badge][license-badge]][license]
 
-This tool parses Terraform plan files in JSON format and gives feedback about the changes.
+This tool parses Terraform plan files in JSON format and gives feedback about the changes or state drift
 
 ## Description
 
@@ -46,6 +46,14 @@ Summary of changes:
 (✨): <known after apply> (module.sql.module.naming_failover.random_string.main)
 
 ```
+
+To monitor state drift rather than changes
+
+```bash
+❯ terraplanfeed --drift ../tfplan/example.json
+```
+
+To output to Azure DevOps
 
 ```bash
 ❯ terraplanfeed ../tfplan/example.json -o azuredevops

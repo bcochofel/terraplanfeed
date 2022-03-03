@@ -19,25 +19,34 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-def getResourceChanges(data):
+def getResourceChanges(data, drift=False):
     """
     Filters Resource Changes from Plan.
 
-    Retrieves the resource_changes portion from terraform plan.
+    Retrieves the resource_changes or resource_drift portion from terraform plan.
 
     Args:
         data (dict): dict from json.load('<terraform plan in json format>')
+        drift (bool): If true process drift rather than changes
 
     Returns:
-        List of resource_changes
+        List of resource_changes or resource_drift
     """
 
-    logger.debug("filter resource_changes from plan")
-    if "resource_changes" in data.keys():
-        return data["resource_changes"]
+    if drift:
+        logger.debug("filter resource_drift from plan")
+        if "resource_drift" in data.keys():
+            return data["resource_drift"]
+        else:
+            logger.debug("no resource_drift found")
+            return []
     else:
-        logger.error("no resource_changes found")
-        return []
+        logger.debug("filter resource_changes from plan")
+        if "resource_changes" in data.keys():
+            return data["resource_changes"]
+        else:
+            logger.error("no resource_changes found")
+            return []
 
 
 def filterNoOp(resources):
@@ -138,7 +147,7 @@ def getAttributes(data):
     return resources
 
 
-def parsePlan(tfplan):
+def parsePlan(tfplan, drift):
     """
     Parse Terraform plan in JSON.
 
@@ -151,7 +160,7 @@ def parsePlan(tfplan):
 
     logger.debug("parsing file...")
 
-    all_resources = getResourceChanges(tfplan)
+    all_resources = getResourceChanges(tfplan, drift)
     logger.debug(all_resources)
 
     resource_changing = filterNoOp(all_resources)

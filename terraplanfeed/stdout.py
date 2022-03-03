@@ -31,8 +31,13 @@ ACTION_TEXT = {
     "delete": "X",
 }
 
-HEADER = """
+HEADER_CHANGES = """
 **Terraform Plan changes summary:**
+===================================
+"""
+
+HEADER_DRIFT = """
+**Terraform Plan drift summary:**
 ===================================
 """
 
@@ -60,7 +65,7 @@ def getAction(actions, textonly):
         return lookup[actions[0]]
 
 
-def parseChanges(changes, textonly):
+def parseChanges(changes, textonly, drift):
     """
     Parse changes.
 
@@ -83,32 +88,37 @@ def parseChanges(changes, textonly):
     return content
 
 
-def write(content):
+def write(content, drift):
     """
     Writes summary of changes to stdout.
 
     Args:
         content(str): multiline string
+        drift(bool): flag denoting drift mode
     """
 
     logger.debug("write to stdout")
-    print(HEADER)
+    if drift:
+        print(HEADER_DRIFT)
+    else:
+        print(HEADER_CHANGES)
     print(content)
     print(FOOTER)
 
 
-def generate_stdout(changes, textonly=False):
+def generate_stdout(changes, textonly=False, drift=False):
     """
     Entrypoint for stdout output driver.
 
     Args:
         changes(list): list of resources dict
         textonly(bool): disable emoji
+        drift(bool): enable drift mode
     """
 
     logger.debug("stdout entrypoint")
     if not changes:
         content = "No changes"
     else:
-        content = parseChanges(changes, textonly)
-    write(content)
+        content = parseChanges(changes, textonly, drift)
+    write(content, drift)

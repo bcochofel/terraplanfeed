@@ -69,8 +69,13 @@ ACTION_TEXT = {
     "delete": "X",
 }
 
-HEADER = """
+HEADER_CHANGES = """
 **Terraform Plan changes summary:**
+===================================
+"""
+
+HEADER_DRIFT = """
+**Terraform Plan drift summary:**
 ===================================
 """
 
@@ -189,7 +194,7 @@ def formatUrl(azdo):
     return url
 
 
-def formatDataToSend(content, commentType, statusCode):
+def formatDataToSend(content, commentType, statusCode, drift=False):
     """
     Creates JSON content to send to Azure DevOps.
 
@@ -197,12 +202,17 @@ def formatDataToSend(content, commentType, statusCode):
         content(str): multiline string
         commentType(str): comment type
         statusCode(str): status code
+        drift(bool): flag denoting drift mode
 
     Returns:
         dict with the content
     """
 
-    formattedContent = HEADER + content + FOOTER
+    if drift:
+        formattedContent = HEADER_DRIFT + content + FOOTER
+    else:
+        formattedContent = HEADER_CHANGES + content + FOOTER
+
     data = {
         "comments": [
             {
@@ -247,7 +257,7 @@ def sendRequest(url, data, azdo):
     return response.status_code
 
 
-def generate_pr_comment(changes, azdo, textonly=False):
+def generate_pr_comment(changes, azdo, textonly=False, drift=False):
     """
     Handles changes and formats content to send to Azure DevOps API.
 
@@ -255,6 +265,7 @@ def generate_pr_comment(changes, azdo, textonly=False):
         changes(list): list of resources dict
         azdo(dict): Azure DevOps parameters
         textonly(bool): disable emoji
+        drift(bool): flag denoting drift mode
     """
 
     ret = False
@@ -267,7 +278,7 @@ def generate_pr_comment(changes, azdo, textonly=False):
         content = parseChanges(changes, textonly)
         commentType = COMMENTTYPE["CODECHANGE"]
         statusCode = COMMENTTHREADSTATUS["ACTIVE"]
-    data = formatDataToSend(content, commentType, statusCode)
+    data = formatDataToSend(content, commentType, statusCode, drift)
     if validateEnvVars(azdo):
         url = formatUrl(azdo)
         retcode = sendRequest(url, data, azdo)
@@ -275,7 +286,7 @@ def generate_pr_comment(changes, azdo, textonly=False):
         if retcode == 200:
             ret = True
     else:
-        write(content)
+        write(content, drift)
         ret = True
 
     return ret
