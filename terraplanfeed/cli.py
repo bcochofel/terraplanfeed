@@ -146,7 +146,9 @@ def main(
         "apiversion": azdo_apiversion,
     }
 
-    terraplanfeed(filename, output, azdo_params, textonly, drift, detailed_exitcode)
+    terraplanfeed(
+        filename, output, azdo_params, textonly, drift, detailed_exitcode
+    )
 
 
 if __name__ == "__main__":

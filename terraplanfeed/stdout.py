@@ -123,7 +123,9 @@ def detexit(content):
         sys.exit(0)
 
 
-def generate_stdout(changes, textonly=False, drift=False, detailed_exitcode=False):
+def generate_stdout(
+    changes, textonly=False, drift=False, detailed_exitcode=False
+):
     """
     Entrypoint for stdout output driver.
 
